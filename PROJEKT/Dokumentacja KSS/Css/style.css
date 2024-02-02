@@ -1,0 +1,3605 @@
+/*
+PALETA KOLORÓW
+
+**--colorA** jest to występujący w headerze i nawigacji.
+
+**--colorB** jest to kolor wykorzystywany jako tło artykułów.(posiada przeźroczystość)
+
+**--shadow** jest to kolor wykorzystywany do cieni divów.(posiada przeźroczystość)
+
+**--colorC** jest wykorzystywany w stopce.
+
+**--colorD** jest wykorzystywany w sekcji socialmediów.
+
+**--colorE** jest wykorzystywany w rozwijanym menu nawigacji.
+
+**--colorF** jest wykorzystywany w podmenu na mobilnej wersji strony.
+
+**--sel** używany jest do elementów zmieniających kolor po najechaniu w nawigacji.
+
+**--cfont** jest używany jako kolor czcionki i borderów.
+
+**--tra** jest to kolor przeźroczysty.
+
+**--btra** jest używany do przycisków w sliderze.
+
+Markup: 
+    <div style="background-color: var(--colorA); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorA</span>
+    </div>
+    <div style="background-color: var(--colorB); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorB</span>
+    </div>
+    <div style="background-color: var(--shadow); padding: 20px; border: 1px solid black; color: white;">
+        <span>--shadow</span>
+    </div>
+    <div style="background-color: var(--colorC); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorC</span>
+    </div>
+    <div style="background-color: var(--colorD); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorD</span>
+    </div>
+    <div style="background-color: var(--colorE); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorE</span>
+    </div>
+    <div style="background-color: var(--colorF); padding: 20px; border: 1px solid black; color: white;">
+        <span>--colorF</span>
+    </div>
+    <div style="background-color: var(--sel); padding: 20px; border: 1px solid black; color: white;">
+        <span>--sel</span>
+    </div>
+    <div style="background-color: var(--cfont); padding: 20px; border: 1px solid black; color: black;">
+        <span>--cfont</span>
+    </div>
+    <div style="background-color: var(--tra); padding: 20px; border: 1px solid black; color: black;">
+        <span>--tra</span>
+    </div>
+    <div style="background-color: var(--btra); padding: 20px; border: 1px solid black; color: white;">
+        <span>--btra</span>
+    </div>
+
+
+Style guide: Paleta kolorów
+*/
+:root {
+    --colorA: #9e0707;
+    --colorB: rgba(0, 0, 0, 0.623);
+    --shadow: rgba(24, 24, 24, 0.5);
+    --colorC: #291818;
+    --colorD: #490d0d;
+    --colorE: #d10101;
+    --colorF: #690606;
+    --sel: rgb(180, 68, 68);
+    --cfont: #ffffff;
+    --tra: rgba(255, 255, 255, 0);
+    --btra: rgba(39, 36, 36, 0.344);
+
+}
+
+/*
+OGÓLNA STRUKTURA - HEADER
+
+Jest to header zawierający logo strony.
+
+Logo po najechaniu na nie muszą rozpoczyna animację złożoną z podanimacji:
+    - **@keyframes letter** - animacja która odpowiada za ruch pierwszej litery w górę.
+    - **@keyframes Aline** - animacja wysuwająca pierwszą linię.
+    - **@keyframes Bline** - animacja wysuwająca za drugą linię.
+    - **@keyframes box** - odpowiadająca za podskoczenie pudełka.
+
+Markup: <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+Style guide: 1.0
+*/
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-image: url("../Images/background.jpg");
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    height: 90px;
+    background-color: var(--colorA);
+    margin-bottom: 30px;
+    padding: 30px;
+    box-shadow: 0px 5px 5px var(--shadow);
+}
+
+.hleft {
+    width: 100%;
+    height: 100px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: refresh;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+#logo {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (min-width: 1100px) {
+    #logo {
+        transform: scale(1);
+        position: relative;
+        left: 50px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #logo {
+        transform: scale(0.8);
+        position: relative;
+        left: 50px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #logo {
+        transform: scale(0.7);
+        position: relative;
+        left: 50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #logo {
+        transform: scale(0.5);
+        position: relative;
+        left: 0px;
+    }
+}
+
+.lgroup {
+    width: 400px;
+}
+
+.hlineA {
+    width: 80%;
+    height: 5px;
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+.hlineB {
+    width: 60%;
+    height: 5px;
+    background-color: red;
+}
+
+#logo:hover>.lgroup>.hlineA {
+    width: 80%;
+    animation: Aline;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#logo:hover>.lgroup>.hlineB {
+    width: 60%;
+    animation: Bline;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#logo:hover>h1>.let {
+    animation: letter;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes letter {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    75% {
+        top: -20px;
+    }
+
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes Aline {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+
+@keyframes Bline {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+
+@keyframes box {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -20px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+h1 {
+    font-size: 72px;
+    color: white;
+    margin: 0;
+}
+
+.let {
+    float: left;
+    position: relative;
+}
+
+.box {
+    height: 72px;
+    width: 72px;
+    background-color: red;
+    position: relative;
+    border-radius: 50%;
+}
+
+#logo:hover>.box {
+    animation: box;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/*
+OGÓLNA STRUKTURA - NAWIGACJA
+
+Jest to menu dzięki któremu można się przemiestrzać po podstronach. 
+Skonstruowano je za pomocą znaczników **ol**, **li** i **ul**.
+Ma animowaną funkcję rozwijania wykorzystującego animację: **@keyframes sh**.
+W przypadku mobilnego menu wykorzystywane są animacje **@keyframes burger2** 
+i **@keyframes burger1** oraz do rozwijania menu wykorzystany jest skrypt **burger.js**.
+Podlisty w mobilnym menu są obsługiwane za pomocą przycisku z klasą **.navbutton** 
+i wykorzystują skrypt JavaScript **podmenu.js**.
+
+Markup: <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                    <li><a href="Zapis.html">Zapisz się</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+
+Style guide: 1.1
+*/
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+@media screen and (min-width: 1000px) {
+    nav {
+        height: 60px;
+        background-color: var(--colorA);
+        display: flex;
+        justify-content: center;
+        box-shadow: 0px 5px 5px var(--shadow);
+    }
+
+    ol {
+        list-style-type: none;
+        font-size: 32px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        animation: refresh;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .navbutton {
+        display: none;
+    }
+
+    ol>li,
+    ol>li>ul>li {
+        text-align: center;
+        min-width: 240px;
+        height: 60px;
+    }
+
+    ol>li {
+        background-color: var(--colorA);
+    }
+
+    ol>li>ul>li {
+        background-color: var(--colorE);
+    }
+
+
+    ol>li>a,
+    ol>li>ul>li>a,
+    ol>li>span {
+        text-decoration: none;
+        color: white;
+        min-width: 200px;
+        height: 60px;
+        padding: 5px 0 5px 0;
+        display: block;
+    }
+
+    ol>li>ul {
+        list-style-type: none;
+        padding: 0;
+        position: relative;
+        top: -10px;
+        display: none;
+        min-width: 200px;
+    }
+
+    ol>li:hover,
+    ol>li>ul>li:hover {
+        background-color: var(--sel);
+    }
+
+    ol>li:hover>ul {
+        display: block;
+        animation: sh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes sh {
+        from {
+            height: 0px;
+            overflow: hidden;
+        }
+
+        to {
+            height: 280px;
+            overflow: hidden;
+        }
+    }
+
+    .burger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    nav {
+        height: 60px;
+        background-color: var(--colorA);
+        display: flex;
+    }
+
+    ol {
+        list-style-type: none;
+        background-color: var(--colorE);
+        font-size: 32px;
+        color: white;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        height: 600px;
+        display: none;
+        position: relative;
+        top: 60px;
+        left: -70px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes burger2 {
+        0% {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        25% {
+            height: 0;
+            width: 70px;
+            overflow: hidden;
+        }
+
+        50% {
+            height: 600px;
+            width: 70px;
+            overflow: hidden;
+        }
+
+        90% {
+            height: 600px;
+            width: 200px;
+            overflow: hidden;
+        }
+
+        100% {
+            height: 600px;
+            width: 200px;
+            overflow: hidden;
+        }
+    }
+
+    ol.active {
+        display: block;
+        animation: burger2;
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation-delay: -0.5s;
+    }
+
+    ol>li>ul {
+        margin: 10px 0 0 0;
+        padding: 0;
+        list-style-type: none;
+        min-width: 200px;
+        height: auto;
+        display: none;
+    }
+
+    .navbutton {
+        width: 50px;
+        height: 50px;
+        float: right;
+        background-color: var(--colorE);
+        border: 0;
+        font-size: 24px;
+        color: var(--cfont);
+    }
+
+    .ulactive {
+        display: block;
+    }
+
+    ol>li {
+        background-color: var(--colorE);
+        width: 180px;
+        min-height: 80px;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+    }
+
+    ol>li>ul>li {
+        background-color: var(--colorF);
+        width: 140px;
+        min-height: 60px;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+    }
+
+    ol>li,
+    ol>li>ul>li {
+        border-bottom: 1px solid white;
+    }
+
+    ol>li>a,
+    ol>li>ul>li>a {
+        width: 200px;
+        min-height: 60px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .burger {
+        height: 60px;
+        width: 70px;
+        padding: 5px;
+        background-color: var(--colorE);
+        border: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .line {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        display: block;
+        margin: 5px;
+        border-radius: 2px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    nav {
+        height: 60px;
+        background-color: var(--colorA);
+        display: flex;
+    }
+
+    ol {
+        list-style-type: none;
+        background-color: var(--colorE);
+        font-size: 20px;
+        color: white;
+        margin: 0;
+        padding: 0;
+        width: 130px;
+        height: 307px;
+        display: none;
+        position: relative;
+        top: 60px;
+        left: -70px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes burger {
+        0% {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        25% {
+            height: 0;
+            width: 70px;
+            overflow: hidden;
+        }
+
+        50% {
+            height: 307px;
+            width: 70px;
+            overflow: hidden;
+        }
+
+        90% {
+            height: 307px;
+            width: 130px;
+            overflow: hidden;
+        }
+
+        100% {
+            height: 307px;
+            width: 130px;
+            overflow: hidden;
+        }
+    }
+
+    ol.active {
+        display: block;
+        animation: burger;
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation-delay: -0.5s;
+    }
+
+    ol>li>ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        min-width: 120px;
+        height: auto;
+        display: none;
+        position: relative;
+        text-align: center;
+        top: 5px;
+    }
+
+    .navbutton {
+        width: 25px;
+        height: 25px;
+        float: right;
+        background-color: var(--colorE);
+        border: 0;
+        font-size: 23px;
+        color: var(--cfont);
+    }
+
+    .ulactive {
+        display: block;
+    }
+
+    ol>li {
+        background-color: var(--colorE);
+        width: 110px;
+        min-height: 40px;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+    }
+
+    ol>li>ul>li {
+        background-color: var(--colorF);
+        width: 90px;
+        min-height: 30px;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+    }
+
+    ol>li,
+    ol>li>ul>li {
+        border-bottom: 1px solid white;
+    }
+
+    ol>li>a,
+    ol>li>ul>li>a {
+        width: 100px;
+        min-height: 30px;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+    }
+
+    .burger {
+        height: 60px;
+        width: 70px;
+        padding: 5px;
+        background-color: var(--colorE);
+        border: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .line {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        display: block;
+        margin: 5px;
+        border-radius: 2px;
+    }
+}
+
+/*
+STRUKTURA OGÓLNA - FOOTER
+
+Stopka wykorzystywana na każdej podstronie
+
+Markup: <footer>
+            Wyszelkie prawa zastrzeżone &copy;.<br>
+            Autor strony: Jakub Opar
+        </footer>
+
+Style guide: 1.2
+*/
+
+footer {
+    height: 100px;
+    background-color: var(--colorC);
+    width: 100%;
+    padding: 20px 0 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 24px;
+    color: var(--cfont);
+    text-align: center;
+}
+
+/*  
+STRONA GŁÓWNA - powitalny artykuł
+
+Jest to pierwszy artykuł strony. Jego struktura składa się z divów i sekcji o klasach **.right**,**.rd**,**.left**
+oraz kółek ułożonych relatywnie za pomocą diva o klasie **.cicrles**, a nim **.circleA**,**.circleB** i **.circleC**. 
+Dodatkowo posiada przycisk przekierowywujący na artykuł **o nas**.
+
+Markup:
+            <article>
+            <div class="right">
+                <h2>Witaj na stronie</h2>
+                <h3>Szkoły językwej!</h3>
+                <div class="rd">
+                    <a href="#aboutus">O nas</a>
+                </div>
+            </div>
+            <div class="left">
+                <div class="circles">
+                    <div class="circleA"></div>
+                    <div class="circleB"></div>
+                    <div class="circleC"></div>
+                </div>
+            </div>
+        </article>
+
+Style guide: 2.0
+*/
+
+@media screen and (min-width: 550px) {
+    main {
+        margin-top: 30px;
+        padding: 30px 30px 200px 30px;
+        min-height: 1000px;
+        position: relative;
+    }
+
+    article {
+        width: 85%;
+        margin: 30px auto 100px auto;
+        background-color: var(--colorB);
+        border-radius: 20px;
+        border: 4px solid var(--cfont);
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    main {
+        margin-top: 30px;
+        padding: 30px 10px 200px 10px;
+        min-height: 1000px;
+        position: relative;
+    }
+
+    article {
+        width: 90%;
+        margin: 30px auto 100px auto;
+        background-color: var(--colorB);
+        border-radius: 20px;
+        border: 4px solid var(--cfont);
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    article {
+        height: 750px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    article {
+        height: 650px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    article {
+        height: 700px;
+    }
+}
+
+.circles,
+.circles2,
+.circles3 {
+    height: 600px;
+    width: 600px;
+    animation: refresh;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+.circleA,
+.circleB,
+.circleC {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 400%;
+    color: var(--cfont);
+    font-weight: bold;
+    border: 5px solid var(--cfont);
+}
+
+.circles>.circleA {
+    width: 300px;
+    height: 300px;
+    background-image: url("../Images/sp.png");
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+}
+
+.circles>.circleB {
+    width: 350px;
+    height: 350px;
+    background-image: url("../Images/uk.png");
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -250px;
+    left: 200px;
+}
+
+.circles>.circleC {
+    width: 300px;
+    height: 300px;
+    background-image: url("../Images/ge.png");
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -430px;
+    left: 50px;
+}
+
+
+/*  
+STRONA GŁÓWNA - o nas
+
+Stylowanie dla artykułu o nas. Zawiera on kilka akapitów a w nim tekst. 
+Jego struktura jest złożona z sekcji o klasie **.st** zawierającej nagłówek stopnia drugiego
+i diva o klasie **.nd** zawierejącego wcześniej wspomniane akapity.
+
+Markup: <article id="aboutus">
+            <section class="st">
+                <h2>O nas</h2>
+            </section>
+            <div class="nd">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae venenatis dolor. Pellentesque
+                    et scelerisque diam, et consectetur ex. Aliquam ullamcorper cursus urna condimentum gravida. Aliquam
+                    interdum nibh sit amet sollicitudin aliquam. Suspendisse viverra ut mauris quis porttitor.
+                    Suspendisse at ligula gravida, bibendum velit id, pulvinar ante. Cras a sagittis nunc.</p>
+                <p>Suspendisse facilisis hendrerit venenatis. Proin quis sodales metus, eu bibendum risus. Praesent
+                    pulvinar leo id leo elementum, non mattis lacus posuere. Duis ut condimentum elit. Duis at volutpat
+                    sem. Quisque eget dolor purus. Nunc consectetur facilisis laoreet. Donec commodo fringilla est, eget
+                    congue diam euismod sit amet. Nullam tincidunt felis a lacus dictum, in tempor ipsum hendrerit.
+                    Donec ullamcorper nulla mollis arcu semper, eget porta magna dapibus. Donec et sem faucibus,
+                    scelerisque nisi ut, vestibulum arcu.</p>
+                <p>liquam porttitor quam vitae tempor imperdiet. Etiam consectetur consequat bibendum. Nam sagittis diam
+                    massa, eget porta urna volutpat consequat. Proin ullamcorper euismod dui sed egestas. Aenean ut
+                    faucibus orci. Donec vel velit justo. Sed sed diam ac purus porta ultrices. Nam quis nisl ut arcu
+                    pharetra pellentesque id sit amet tortor. Aenean pellentesque eleifend libero eu laoreet. Sed
+                    hendrerit convallis massa et dignissim. Etiam finibus tincidunt enim et porta. Duis in viverra quam,
+                    ut ullamcorper leo. Nulla facilisi. In hac habitasse platea dictumst. Morbi fringilla lacus eu
+                    placerat finibus. Sed fermentum nulla dui, in placerat mi facilisis ut.</p>
+                <p>Vestibulum quis interdum erat. Vestibulum ullamcorper eros et massa luctus, sit amet auctor mi
+                    facilisis. Phasellus maximus, felis eu pulvinar feugiat, mi nibh finibus neque, et vehicula diam
+                    nibh eu ipsum. Maecenas vehicula pulvinar faucibus. Ut bibendum lectus metus, condimentum
+                    ullamcorper sem sagittis eget. Donec eget imperdiet massa. Aliquam sapien ante, egestas sit amet
+                    ante ac, iaculis tincidunt risus.</p>
+            </div>
+        </article>
+
+Style guide: 2.1
+*/
+
+p {
+    color: var(--cfont);
+}
+
+#aboutus {
+    height: auto;
+}
+
+
+/*  
+STRONA GŁÓWNA - oferta
+
+Stylowanie dla artykułu oferty. Zawiera on podobny układ do tego co został wykorzystany w artykule powitalnym
+oraz dwa przyciski przekierowywujące na strony **FAQ.html** i **kontakt.html**.
+
+Markup: <article id="offer">
+            <div class="left">
+                <h2> Poznaj naszą ofertę!</h2>
+                <div class="rd">
+                    <a href="#">Zobacz szczegóły</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="circles2">
+                    <div class="circleA">C1</div>
+                    <div class="circleB">B2</div>
+                    <div class="circleC">A1</div>
+                </div>
+            </div>
+        </article>
+        <article id="contact">
+            <div class="right">
+                <h2> Masz Pytania?</h2>
+                <h3>Napisz do nas lub zobacz często zadawane pytania!</h3>
+                <div class="rd">
+                    <a href="kontakt.html">Kontakt</a>
+                    <a href="FAQ.html">FAQ</a>
+                </div>
+            </div>
+            <div class="left">
+                <div class="circles3">
+                    <div class="circleA">a</div>
+                    <div class="circleB">あ</div>
+                    <div class="circleC">Д</div>
+                </div>
+            </div>
+        </article>
+
+Style guide: 2.2
+*/
+
+#offer>.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circles2>.circleA {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(146, 120, 3);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    left: 50px;
+}
+
+.circles2>.circleB {
+    width: 350px;
+    height: 350px;
+    background-color: rgb(207, 178, 13);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -200px;
+    left: 200px;
+}
+
+.circles2>.circleC {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(255, 208, 0);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -350px;
+    left: 80px;
+}
+
+.circles3>.circleA {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(114, 11, 11);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    left: 170px;
+}
+
+.circles3>.circleB {
+    width: 350px;
+    height: 350px;
+    background-color: rgb(168, 16, 16);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -200px;
+    left: 0px;
+}
+
+.circles3>.circleC {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px var(--shadow);
+    position: relative;
+    top: -350px;
+    left: 120px;
+}
+
+@media screen and (min-width: 1400px) {
+    .circles {
+        transform: scale(1);
+        position: relative;
+        left: 30px;
+    }
+
+    .circles2 {
+        transform: scale(1);
+        position: relative;
+        left: 30px;
+    }
+
+    .circles3 {
+        transform: scale(1);
+        position: relative;
+        left: 30px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .circles {
+        transform: scale(0.8);
+        position: relative;
+        left: 20px;
+    }
+
+    .circles2 {
+        transform: scale(0.8);
+    }
+
+    .circles3 {
+        transform: scale(0.8);
+        position: relative;
+        left: 50px;
+    }
+
+}
+
+@media screen and (max-width: 1050px) {
+    .circles {
+        transform: scale(0.6);
+        position: relative;
+        top: -150px;
+        left: 20px;
+    }
+
+    .circles2 {
+        transform: scale(0.6);
+        position: relative;
+        top: -200px;
+    }
+
+    #offer>.left>.rd {
+        position: relative;
+        bottom: -500px;
+    }
+
+    .circles3 {
+        transform: scale(0.6);
+        position: relative;
+        top: -150px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .circles {
+        transform: scale(0.4);
+        position: relative;
+        top: -200px;
+    }
+
+    .circles2 {
+        transform: scale(0.4);
+        position: relative;
+        top: -200px;
+    }
+
+    .circles3 {
+        transform: scale(0.4);
+        position: relative;
+        left: 10px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .right>h2 {
+        font-size: 64px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h2::first-letter {
+        font-size: 70px;
+    }
+
+    .right>h3 {
+        font-size: 42px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h3::first-letter {
+        font-size: 48px;
+    }
+
+
+    .left {
+        float: left;
+        width: 50%;
+        height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .left>h2 {
+        font-size: 64px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .left>h2::first-letter {
+        font-size: 70px;
+    }
+
+    .left>.rd {
+        position: relative;
+        bottom: -150px;
+    }
+
+    .right {
+        float: right;
+        width: 50%;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right>.rd {
+        position: relative;
+        bottom: -50px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .right>h2 {
+        font-size: 36px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h2::first-letter {
+        font-size: 42px;
+    }
+
+    .right>h3 {
+        font-size: 20px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h3::first-letter {
+        font-size: 26px;
+    }
+
+
+    .left {
+        float: left;
+        width: 50%;
+        height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .left>h2 {
+        font-size: 36px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .left>h2::first-letter {
+        font-size: 42px;
+    }
+
+    .left>.rd {
+        position: relative;
+        bottom: -150px;
+    }
+
+    .right {
+        float: right;
+        width: 50%;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right>.rd {
+        position: relative;
+        bottom: -100px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .right>h2 {
+        font-size: 36px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h2::first-letter {
+        font-size: 42px;
+    }
+
+    .right>h3 {
+        font-size: 20px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h3::first-letter {
+        font-size: 26px;
+    }
+
+
+    .left {
+        float: left;
+        width: 100%;
+        height: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .left>h2 {
+        font-size: 36px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .left>h2::first-letter {
+        font-size: 42px;
+    }
+
+    .left>.rd {
+        position: relative;
+        bottom: -350px;
+    }
+
+    .right {
+        float: right;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right>.rd {
+        position: relative;
+        bottom: -470px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .right>h2 {
+        font-size: 24px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h2::first-letter {
+        font-size: 30px;
+    }
+
+    .right>h3 {
+        font-size: 14px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .right>h3::first-letter {
+        font-size: 20px;
+    }
+
+
+    .left {
+        float: left;
+        width: 100%;
+        height: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .left>h2 {
+        font-size: 24px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: center;
+    }
+
+    .left>h2::first-letter {
+        font-size: 30px;
+    }
+
+    .left>.rd {
+        position: relative;
+        bottom: -300px;
+    }
+
+    .right {
+        float: right;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right>.rd {
+        position: relative;
+        bottom: -400px;
+    }
+}
+
+.st {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid var(--cfont);
+}
+
+@media screen and (min-width: 550px) {
+    .st>h2 {
+        font-size: 40px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .st>h2::first-letter {
+        font-size: 46px;
+    }
+
+    .nd {
+        height: 40%;
+        padding: 50px;
+        font-size: 24px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: justify;
+    }
+
+    p::first-letter {
+        font-size: 22px;
+        font-weight: bold;
+        margin-left: 60px;
+    }
+
+    .rd {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .rd>a {
+        display: block;
+        color: var(--cfont);
+        text-decoration: none;
+        font-size: 24px;
+        min-width: 170px;
+        min-height: 40px;
+        margin: 10px;
+        padding: 5px 10px 5px 10px;
+        border: 2px solid var(--cfont);
+        float: right;
+        text-align: center;
+        transform: scale(1);
+        animation: throw;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        border-radius: 10px;
+    }
+
+    .rd>a:hover {
+        background-color: var(--colorF);
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .st>h2 {
+        font-size: 24px;
+        color: var(--cfont);
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .nd {
+        height: 65%;
+        padding: 25px;
+        font-size: 14px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        text-align: justify;
+    }
+
+    p::first-letter {
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 30px;
+
+    }
+
+    .rd {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        animation: refresh;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .rd>a {
+        display: block;
+        color: var(--cfont);
+        text-decoration: none;
+        font-size: 16px;
+        min-width: 120px;
+        height: auto;
+        padding: 5px 10px 5px 10px;
+        margin: 10px;
+        border: 2px solid var(--cfont);
+        float: right;
+        text-align: center;
+        transform: scale(1);
+        animation: throw;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+        border-radius: 10px;
+    }
+
+    .rd>a:hover {
+        background-color: var(--colorF);
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@keyframes select {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes throw {
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes refresh {
+    0% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/*  
+STRONA GŁÓWNA - slider
+
+Stylowanie dla artykułu podglądu galerii w formie slidera. Jego funkcjonalność jest zawdzięczana językowi JavaScript (skrypt **slider.js**). 
+Złożony on jest z dwóch strzałek pozwalających na przełączanie zdjęć (klasy **.prev** i **.next**) oraz niżej kropek 
+(klasa **.dot**) za pomocą których też można wybrać dane zdjęcie (klasa **.mySlides**). 
+Zdjęcia posiadają również klasę **.Fade** odpowiadającą za animację zanikania.
+
+Markup: <article id="slgal">
+            <section class="st">
+                <h2>Nasza Galeria</h2>
+            </section>
+            <div class="nd">
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj1.jpg" alt="obraz">
+                        <div class="text">1</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj2.jpg" alt="obraz">
+                        <div class="text">2</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj3.jpg" alt="obraz">
+                        <div class="text">3</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj4.jpg" alt="obraz">
+                        <div class="text">4</div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+            <div class="rd">
+                <a href="Galery.html">Zobacz zdjęcia</a>
+            </div>
+            <script src="../Scripts/slider.js"></script>
+        </article>
+
+Style guide: 2.3
+*/
+
+
+@media screen and (min-width: 1200px) {
+    #slgal {
+        height: 1100px;
+    }
+
+    #slgal>.nd {
+        height: 60%;
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 820px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .mySlides {
+        display: none;
+        width: 800px;
+        height: 600px;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 0px 7px 7px var(--shadow);
+    }
+
+    .mySlides>img {
+        width: 800px;
+        height: 600px;
+        border-radius: 10px;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin: -40px 10px 0 10px;
+        padding: 16px;
+        color: var(--cfont);
+        font-weight: bold;
+        font-size: 48px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: var(--btra);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+        color: #f2f2f2;
+        font-size: 32px;
+        padding: 8px 12px;
+        position: relative;
+        bottom: 140px;
+        width: 97%;
+        height: 120px;
+        text-align: center;
+        background-color: var(--btra);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .act,
+    .dot:hover {
+        background-color: #717171;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    #slgal {
+        height: 1100px;
+    }
+
+    #slgal>.nd {
+        height: 60%;
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 620px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .mySlides {
+        display: none;
+        width: 600px;
+        height: 450px;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 0px 7px 7px var(--shadow);
+    }
+
+    .mySlides>img {
+        width: 600px;
+        height: 450px;
+        border-radius: 10px;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin: -40px 10px 0 10px;
+        padding: 16px;
+        color: var(--cfont);
+        font-weight: bold;
+        font-size: 36px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: var(--btra);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+        color: #f2f2f2;
+        font-size: 24px;
+        padding: 8px 12px;
+        position: relative;
+        bottom: 101px;
+        width: 96%;
+        height: 80px;
+        text-align: center;
+        background-color: var(--btra);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .act,
+    .dot:hover {
+        background-color: #717171;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #slgal {
+        height: 800px;
+    }
+
+    #slgal>.nd {
+        height: 50%;
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 420px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .mySlides {
+        display: none;
+        width: 400px;
+        height: 300px;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 0px 7px 7px var(--shadow);
+    }
+
+    .mySlides>img {
+        width: 400px;
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin: -30px 10px 0 10px;
+        padding: 16px;
+        color: var(--cfont);
+        font-weight: bold;
+        font-size: 16px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: var(--btra);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+        color: #f2f2f2;
+        font-size: 16px;
+        padding: 8px 12px;
+        position: relative;
+        bottom: 60px;
+        width: 94%;
+        height: 40px;
+        text-align: center;
+        background-color: var(--btra);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .act,
+    .dot:hover {
+        background-color: #717171;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #slgal {
+        height: 550px;
+    }
+
+    #slgal>.nd {
+        height: 50%;
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 270px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .mySlides {
+        display: none;
+        width: 250px;
+        height: 187px;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 0px 7px 7px var(--shadow);
+    }
+
+    .mySlides>img {
+        width: 250px;
+        height: 187px;
+        border-radius: 10px;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin: -30px 10px 0 10px;
+        padding: 16px;
+        color: var(--cfont);
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: var(--btra);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+        color: #f2f2f2;
+        font-size: 16px;
+        padding: 8px 12px;
+        position: relative;
+        bottom: 40px;
+        width: 90%;
+        height: 20px;
+        text-align: center;
+        background-color: var(--btra);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .act,
+    .dot:hover {
+        background-color: #717171;
+    }
+
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+}
+
+/*
+STRONA GŁÓWNA - socialmedia
+
+Sekcja zawierająca socialmedia. Jest ona podzielone na trzy części. 
+Pierwsza zawiera nagłówek drugiego stopnia.
+Druga zawiera ikony które są linkami do socialmediów.
+Trzecia zawiera wzorek wykonany za pomocą **Display:grid**,diva o klasie **.square**
+ i ustawienia odpowiednich właściwości **border-radius** dla danego dziecka.
+
+Markup: <section class="headersocialbar">
+            <h2>Nasze Socialmedia!</h2>
+        </section>
+        <div class="socialbar">
+            <a href="#"><img class="facebook" src="../Images/facebook.png" alt="ioon" /></a>
+            <a href="#"><img class="youtube" src="../Images/youtube.png" alt="ioon" /></a>
+            <a href="#"><img class="twitter" src="../Images/twitter.png" alt="ioon" /></a>
+            <a href="#"><img class="instagram" src="../Images/instagram.png" alt="ioon" /></a>
+        </div>
+        <div class="socialbarbottom">
+            <div class="sin">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+        </div>
+
+Style guide: 2.4
+*/
+
+@media screen and (min-width: 650px) {
+
+    .socialbar {
+        height: 200px;
+        width: 85%;
+        margin: 25px auto 25px auto;
+        background-color: var(--colorD);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+
+    .headersocialbar {
+        height: 200px;
+        width: 85%;
+        margin: 25px auto 25px auto;
+        background-color: var(--colorD);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+
+    .headersocialbar>h2 {
+        font-size: 48px;
+        color: white;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .headersocialbar>h2::first-letter {
+        font-size: 54px;
+    }
+
+    .socialbar>a {
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .socialbar {
+        height: 200px;
+        width: 85%;
+        margin: 25px auto 25px auto;
+        background-color: var(--colorD);
+        border-radius: 25px;
+        display: grid;
+        padding: 40px 0px 40px 0px;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        gap: 30px;
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+
+    .headersocialbar {
+        height: 200px;
+        width: 85%;
+        margin: 25px auto 25px auto;
+        background-color: var(--colorD);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 10px 5px 5px var(--shadow);
+    }
+
+    .headersocialbar>h2 {
+        font-size: 24px;
+        color: white;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .headersocialbar>h2::first-letter {
+        font-size: 30px;
+    }
+
+    .socialbar>a>img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .socialbar>a {
+        margin: 0 auto 0 auto;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+.facebook {
+    filter: drop-shadow(0 9px 9px var(--shadow));
+    animation: throw;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1);
+}
+
+.twitter {
+    filter: drop-shadow(0 9px 9px var(--shadow));
+    animation: throw;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1);
+}
+
+.youtube {
+    filter: drop-shadow(0 9px 9px var(--shadow));
+    animation: throw;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1);
+}
+
+.instagram {
+    filter: drop-shadow(0 9px 9px var(--shadow));
+    animation: throw;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1);
+}
+
+
+.facebook:hover {
+    filter: drop-shadow(0 9px 9px blue);
+    animation: select;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1.1);
+}
+
+.twitter:hover {
+    filter: drop-shadow(0 9px 9px aqua);
+    animation: select;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1.1);
+}
+
+.youtube:hover {
+    filter: drop-shadow(0 9px 9px red);
+    animation: select;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1.1);
+}
+
+.instagram:hover {
+    filter: drop-shadow(0 9px 9px rgb(168, 1, 98));
+    animation: select;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(1.1);
+}
+
+.socialbarbottom {
+    height: 200px;
+    width: 85%;
+    margin: 25px auto 25px auto;
+    background-color: var(--colorD);
+    border-radius: 25px;
+    box-shadow: 10px 5px 5px var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sin {
+    width: 95%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+}
+
+.square:nth-child(4n + 1) {
+    border-top-right-radius: 100%;
+}
+
+.square:nth-child(4n + 2) {
+    border-top-left-radius: 100%;
+}
+
+.square:nth-child(4n + 3) {
+    border-bottom-right-radius: 100%;
+}
+
+.square:nth-child(4n + 4) {
+    border-bottom-left-radius: 100%;
+}
+
+/*
+GALERIA
+
+Jest onaustawiona za pomocą display: grid. Zawiera wszystkie obrazy uzyte na stronie. 
+Po najechaniu na obraz jest wykonywana animacja powiększenia a po zjechaniu kursorem zmiejszenia do pierwotnego rozmiaru.
+**@keyframes select** i **@keyframes throw**.
+
+Markup: <article class="autoh">
+            <div id="Gal">
+                <img class="photo" src="../Images/zdj1.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj2.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj3.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj4.jpg" alt="photo">
+            </div>
+        </article>
+
+Style guide: 3.0
+*/
+
+@media screen and (min-width: 900px) {
+    #Gal {
+        height: auto !important;
+        display: grid;
+        width: auto;
+        grid-template-columns: 400px 400px;
+        gap: 50px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .autoh {
+        height: auto !important;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .photo {
+        width: 400px;
+        height: 300px;
+        background-color: blue;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 10px 5px 5px var(--shadow);
+        animation: throw;
+        transform: scale(1);
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .photo:hover {
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #Gal {
+        height: auto !important;
+        width: auto;
+        display: grid;
+        grid-template-columns: 300px 300px;
+        gap: 30px;
+    }
+
+    .autoh {
+        height: auto !important;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .photo {
+        width: 250px;
+        height: 166px;
+        background-color: blue;
+        border: 10px solid white;
+        border-radius: 30px;
+        box-shadow: 10px 5px 5px var(--shadow);
+        transform: scale(1);
+        animation: throw;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .photo:hover {
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #Gal {
+        min-height: 700px;
+        display: grid;
+        width: auto;
+        grid-template-columns: 220px;
+        gap: 30px;
+        animation: refresh;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .autoh {
+        height: auto !important;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .photo {
+        width: 200px;
+        height: 133px;
+        background-color: blue;
+        border: 10px solid white;
+        border-radius: 20px;
+        box-shadow: 10px 5px 5px var(--shadow);
+        transform: scale(1);
+        animation: throw;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .photo:hover {
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+}
+
+/*
+CENNIK - tablice
+
+Tutaj zawarte są tablice które w przypadku braku miejsca otrzymują scroll. 
+Tablica w pierwszej kolumnie i pierwszym wierszu zawiera elemety o klasie **.minicircle1**,**.minicircle2**,**.minicircle3** i **.minicircle4**.
+Oprócz tego na samym początku jest zawarty artykuł zawierający informacje o poziomach języków, który jest podzielony za pomocą divów o klasie **.catline**.
+Te divy również zawierają jeden element o klasie **.minicircle1**,**.minicircle2**,**.minicircle3** i **.minicircle4**.
+
+Markup: <article id="langlevels">
+            <section class="st">
+                <h2>Poziomy języków</h2>
+            </section>
+            <div class="nd">
+                <div class="catline">
+                    <div class="minicircle1">A1</div>
+                    <p>Torem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle2">B2</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle3">C1</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle4">C2</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+            </div>
+        </article>
+            <article id="tab">
+            <section>
+                <h2>Cennik kursów (zł/h)</h2>
+            </section>
+            <div class="tabControl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><img class="minicircle1" src="../Images/uk_mini.png" alt="uk"></th>
+                            <th><img class="minicircle1" src="../Images/ge_mini.png" alt="ge"></th>
+                            <th><img class="minicircle1" src="../Images/sp_mini.png" alt="sp"></th>
+                            <th><img class="minicircle1" src="../Images/fr_mini.png" alt="fr"></th>
+                            <th><img class="minicircle1" src="../Images/it_mini.png" alt="it"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="minicircle1">A1</div>
+                            </td>
+                            <td>40zł</td>
+                            <td>40zł</td>
+                            <td>50zł</td>
+                            <td>50zł</td>
+                            <td>50zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle2">B2</div>
+                            </td>
+                            <td>60zł</td>
+                            <td>60zł</td>
+                            <td>70zł</td>
+                            <td>70zł</td>
+                            <td>70zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle3">C1</div>
+                            </td>
+                            <td>80zł</td>
+                            <td>80zł</td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle4">C2</div>
+                            </td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                            <td>120zł</td>
+                            <td>120zł</td>
+                            <td>120zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article id="tab">
+            <section>
+                <h2>Cennik egzaminów</h2>
+            </section>
+            <div class="tabControl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><img class="minicircle1" src="../Images/uk_mini.png" alt="uk"></th>
+                            <th><img class="minicircle1" src="../Images/ge_mini.png" alt="ge"></th>
+                            <th><img class="minicircle1" src="../Images/sp_mini.png" alt="sp"></th>
+                            <th><img class="minicircle1" src="../Images/fr_mini.png" alt="fr"></th>
+                            <th><img class="minicircle1" src="../Images/it_mini.png" alt="it"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="minicircle1">A1</div>
+                            </td>
+                            <td>200zł</td>
+                            <td>200zł</td>
+                            <td>400zł</td>
+                            <td>400zł</td>
+                            <td>400zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle2">B2</div>
+                            </td>
+                            <td>600zł</td>
+                            <td>600zł</td>
+                            <td>1000zł</td>
+                            <td>1000zł</td>
+                            <td>1000zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle3">C1</div>
+                            </td>
+                            <td>1500zł</td>
+                            <td>1500zł</td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle4">C2</div>
+                            </td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                            <td>3000zł</td>
+                            <td>3000zł</td>
+                            <td>3000zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+Style guide: 4.0
+*/
+@media screen and (min-width: 1050px) {
+    #tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 1500px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        border: 4px solid rgb(85, 47, 17);
+        border-collapse: collapse;
+        border-spacing: 0;
+        height: 200px;
+        width: 200px;
+        text-align: center;
+        color: var(--cfont);
+        background-color: var(--colorC);
+        font-size: 32px;
+    }
+
+    #tab>section>h2 {
+        text-align: center;
+        color: var(--cfont);
+        font-size: 48px;
+    }
+
+    .minicircle1,
+    .minicircle2,
+    .minicircle3,
+    .minicircle4 {
+        width: 160px;
+        height: 160px;
+        font-size: 36px;
+        margin: 20px;
+    }
+
+}
+
+@media screen and (max-width: 1050px) {
+    #tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 1500px;
+    }
+
+    td,
+    th {
+        border: 4px solid rgb(85, 47, 17);
+        border-spacing: 0;
+        height: 150px;
+        width: 150px;
+        text-align: center;
+        color: var(--cfont);
+        background-color: var(--colorC);
+        font-size: 24px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    #tab>section>h2 {
+        text-align: center;
+        color: var(--cfont);
+        font-size: 48px;
+    }
+
+    .minicircle1,
+    .minicircle2,
+    .minicircle3,
+    .minicircle4 {
+        width: 110px;
+        height: 110px;
+        font-size: 32px;
+        margin: 20px;
+    }
+
+
+}
+
+@media screen and (max-width: 550px) {
+    #tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 900px;
+    }
+
+    td,
+    th {
+        border: 4px solid rgb(85, 47, 17);
+        border-collapse: collapse;
+        border-spacing: 0;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        color: var(--cfont);
+        font-size: 20px;
+    }
+
+    #tab>section>h2 {
+        text-align: center;
+        color: var(--cfont);
+        font-size: 36px;
+    }
+
+    .minicircle1,
+    .minicircle2,
+    .minicircle3,
+    .minicircle4 {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+        margin: 10px;
+    }
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.tabControl {
+    overflow-x: auto;
+    border: 4px solid var(--cfont);
+    width: 90%;
+    height: auto;
+}
+
+.minicircle1,
+.minicircle2,
+.minicircle3,
+.minicircle4 {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cfont);
+    transform: scale(1);
+    animation: throw;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+.minicircle4 {
+    background-color: rgb(65, 49, 5);
+}
+
+.minicircle3 {
+    background-color: rgb(88, 83, 6);
+}
+
+.minicircle2 {
+    background-color: rgb(145, 136, 16);
+}
+
+.minicircle1 {
+    background-color: rgb(255, 238, 0);
+}
+
+.minicircle1:hover,
+.minicircle2:hover,
+.minicircle3:hover,
+.minicircle4:hover {
+    transform: scale(1.1);
+    animation: select;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+#langlevels {
+    height: auto;
+}
+
+.catline {
+    min-height: 200px;
+    width: 100%;
+    border-bottom: 1px solid var(--cfont);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.catline>.minicircle1,
+.catline>.minicircle2,
+.catline>.minicircle3,
+.catline>.minicircle4 {
+    float: left;
+}
+
+.catline>p {
+    float: right;
+    width: 70%;
+}
+
+/*
+QUIZ - menu
+
+Odpowiada za wybór quizu z odpowiedniego języka. Elemnty są wypozycjonowane za pomocą właściwości **display: flex** 
+i w razie braku miejsca przechądzą niżej. Dzieje się taki dzięki właściwości **flex-wrap: wrap**. Elementy to obrazy o klasie
+**.minicircle1**
+
+Markup: <article id="quizmenu">
+            <section class="st">
+                <h2> Sprawdź swój poziom języka </h2>
+            </section>
+            <div class="menuquizpanel">
+                <img class="minicircle1" src="../Images/uk_mini.png" alt="uk">
+                <img class="minicircle1" src="../Images/sp_mini.png" alt="sp">
+                <img class="minicircle1" src="../Images/ge_mini.png" alt="ge">
+                <img class="minicircle1" src="../Images/fr_mini.png" alt="fr">
+                <img class="minicircle1" src="../Images/it_mini.png" alt="it">
+            </div>
+            <script src="../Scripts/selectQuiz.js"></script>
+        </article>
+
+Style guide: 5.0
+*/
+
+
+.menuquizpanel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.menuquizpanel>a {
+    display: block;
+    color: var(--cfont);
+    text-decoration: none;
+    font-size: 24px;
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+    border: 2px solid var(--cfont);
+    float: right;
+    text-align: center;
+    transform: scale(1);
+    animation: throw;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 1050px) {
+    .menuquizpanel>a {
+        min-width: 170px;
+        min-height: 170px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .menuquizpanel>a {
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    #quizmenu {
+        height: 900px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #quizmenu {
+        height: 900px;
+    }
+}
+
+.menuquizpanel>a:hover {
+    background-color: var(--colorF);
+    transform: scale(1.1);
+    animation: select;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+#quizpanel {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*
+QUIZ - aplikacja
+
+Wygląd przycisku zatwierdzającego odpowiedzi w quzie. W divie o id **#generatedquiz** jest generowany quiz 
+za pomocą aplikacji JavaScript. Więcej informacji o jej działaniu w dokumentacji Jsdoc.
+
+Markup: <article id="quiz">
+            <div id="quizpanel">
+                <div id="generatedquiz"></div>
+                <button id="submit">Zatwierdź odpowiedzi</button>
+                <div id="results"></div>
+                <script src="../Scripts/quiz.js"></script>
+            </div>
+        </article>
+
+Style guide: 5.1
+*/
+
+@media screen and (min-width: 1050px) {
+    #quiz {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 50px 0 50px 0;
+    }
+
+    .question {
+        color: var(--cfont);
+        font-size: 28px;
+        text-align: center;
+        border-bottom: 2px solid var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .Qcontainer {
+        width: 90%;
+        border: 2px solid var(--cfont);
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    #generatedquiz {
+        color: var(--cfont);
+        font-size: 24px;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .answers {
+        padding: 20px 0 20px 0;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .answers>label>input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    #submit {
+        font-size: 28px;
+        background-color: var(--colorE);
+        color: #fff;
+        border: 0px;
+        border-radius: 10px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        width: 200px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: throw;
+        transform: scale(1);
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #submit:hover {
+        background-color: var(--colorD);
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #results {
+        font-size: 28px;
+        color: var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 70%;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #quiz {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 50px 0 50px 0;
+    }
+
+    .question {
+        color: var(--cfont);
+        font-size: 24px;
+        text-align: center;
+        border-bottom: 2px solid var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .Qcontainer {
+        width: 90%;
+        border: 2px solid var(--cfont);
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    #generatedquiz {
+        color: var(--cfont);
+        font-size: 24px;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .answers {
+        padding: 20px 0 20px 0;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .answers>label>input[type="radio"] {
+        width: 18px;
+        height: 18px;
+    }
+
+    #submit {
+        font-size: 28px;
+        background-color: var(--colorE);
+        color: #fff;
+        border: 0px;
+        border-radius: 10px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        width: 200px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: throw;
+        transform: scale(1);
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #submit:hover {
+        background-color: var(--colorD);
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #results {
+        font-size: 28px;
+        color: var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 70%;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    #quiz {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 50px 0 50px 0;
+    }
+
+    .question {
+        color: var(--cfont);
+        font-size: 20px;
+        text-align: center;
+        border-bottom: 2px solid var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .Qcontainer {
+        width: 90%;
+        border: 2px solid var(--cfont);
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    #generatedquiz {
+        color: var(--cfont);
+        font-size: 16px;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .answers {
+        padding: 20px 0 20px 0;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .answers>label>input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    #submit {
+        font-size: 20px;
+        background-color: var(--colorE);
+        color: #fff;
+        border: 0px;
+        border-radius: 10px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        width: 160px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: throw;
+        transform: scale(1);
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #submit:hover {
+        background-color: var(--colorD);
+        transform: scale(1.1);
+        animation: select;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #results {
+        font-size: 20px;
+        color: var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 70%;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+
+/*
+FAQ
+
+Artykuł zawierający najczęściej zadawane pytania zrobione w formie popup. Po kliknięciu na element
+zawierający pytanie (klasa **.FAQcontainer**, a w niej klasa **.FAQquestion**) element rozszerza się
+ukazując odpowiedź (klasa **.FAQanswer**).
+
+Markup: <article id="FAQ">
+            <section class="st">
+                <h2>FAQ</h2>
+            </section>
+            <div class="nd">
+                <div class="FAQcontainer">
+                    <div class="FAQquestion">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                    <div class="FAQanswer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                </div>
+                <div class="FAQcontainer">
+                    <div class="FAQquestion">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                    <div class="FAQanswer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                </div>
+                <div class="FAQcontainer">
+                    <div class="FAQquestion">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                    <div class="FAQanswer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                </div>
+                <div class="FAQcontainer">
+                    <div class="FAQquestion">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                    <div class="FAQanswer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                </div>
+                <div class="FAQcontainer">
+                    <div class="FAQquestion">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                    <div class="FAQanswer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </div>
+                </div>
+            </div>
+        </article>
+        <script src="../Scripts/popupFAQ.js"></script>
+
+Style guide: 6.0
+*/
+
+#FAQ {
+    height: 1000px;
+    padding: 40px 0 40px 0;
+}
+
+#FAQ>.nd {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.FAQcontainer {
+    width: 90%;
+    height: auto;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: var(--colorA);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--cfont);
+}
+
+.FAQquestion {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FAQanswer {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    margin-top: 30px;
+}
+
+/*
+ZAPIS
+
+Formularz który posiada walidację i realizuje zapisanie się na dany kurs. Posiada:
+    - pięć pól tekstowych,w tym dwa wymagające wpisania danych w konretnym formacie.
+    - dwa selecty zawierający opcje wyboru języka oraz jego poziomu.
+    - jeden checkbox z akceptacją regulaminu.
+    - przycisk wysyłający formularz po przejściu walidacji.
+    - wszystkie pola formularza są wymagane.
+
+Markup: <article id="register">
+                <section class="st">
+                    <h2>Zapisz się</h2>
+                </section>
+                <div class="nd">
+                    <div class="formcontrol">
+                        <form>
+                            <label for="name">Imie:</label>
+                            <input type="text" id="name" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                            <label for="surname">Nazwisko:</label>
+                            <input type="text" id="surname" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Email musi mieć format example@example.com!" required>
+                            <label for="adres">Adres zamieszkania:</label>
+                            <input type="text" id="adres" pattern="[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż0-9\s]*" required>
+                            <label for="kodPocztowy">Kod pocztowy:</label>
+                            <input type="text" id="kodPocztowy" pattern="\d{2}-\d{3}"  title="Kod pocztowy musi mieć format XX-XXX, gdzie X to cyfra!" required>
+                            <label for="miejscowosc">Miejscowość:</label>
+                            <input type="text" id="miejscowosc" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" required>
+                            <label for="jezyk">Wybierz język:</label>
+                            <select id="jezyk">
+                                <option>Angielski</option>
+                                <option>Niemiecki</option>
+                                <option>Hiszpański</option>
+                                <option>Włoski</option>
+                                <option>Francuski</option>
+                            </select>
+                            <label for="poziom">Wybierz poziom:</label>
+                            <select id="poziom">
+                                <option>A1</option>
+                                <option>B2</option>
+                                <option>C1</option>
+                                <option>C2</option>
+                            </select>
+                            <label for="regulamin">Akceptuje regulamin szkoły: </label>
+                            <input type="checkbox" id="regulamin" required>
+                            <button type="submit">Wyślij</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+
+Style guide: 7.0
+*/
+
+/*
+KONTAKT
+
+Formularz posiadający walidację dzięki ktoremu można się skontaktować ze szkołą. 
+Posiada dwa pola tekstowe oraz textarea do wpisania treści wiadomosci.
+
+Markup: <article id="kontakt">
+            <section class="st">
+                <h2>Napisz do nas!</h2>
+            </section>
+            <div class="nd">
+                <div class="formcontrol">
+                    <form>
+                        <label for="name">Imie:</label>
+                        <input type="text" id="name" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                        <label for="surname">Nazwisko:</label>
+                        <input type="text" id="surname" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                        <label for="tresc">Treść:</label>
+                        <textarea></textarea>
+                        <button type="submit">Wyślij</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+Style guide: 7.1
+*/
+
+#register,
+#kontakt {
+    height: auto;
+}
+
+#register>.nd,
+#kontakt>.nd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+@media screen and (min-width: 550px) {
+    .formcontrol {
+        width: 80%;
+        height: 100%;
+        border: 2px solid var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 20px;
+        color: var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .formcontrol>form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .formcontrol>form>input,
+    .formcontrol>form>select {
+        margin-bottom: 20px;
+    }
+
+    .formcontrol>form>input[type="text"] {
+        height: 35px;
+        width: 55%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 20px;
+    }
+
+    .formcontrol>form>select {
+        height: 40px;
+        min-width: 30%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        font-size: 20px;
+        color: white;
+    }
+
+    .formcontrol>form>select>option {
+        background-color: gray;
+    }
+
+    .formcontrol>form>input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        position: relative;
+        bottom: 27px;
+        left: 180px;
+    }
+
+    .formcontrol>form>button {
+        height: 45px;
+        min-width: 45%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 24px;
+    }
+
+    #email {
+        width: 85%;
+    }
+
+    .formcontrol>form>textarea {
+        width: 550px;
+        height: 200px;
+        font-size: 24px;
+        border-radius: 20px;
+        background-color: var(--tra);
+        border: 2px solid white;
+        color: var(--cfont);
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .formcontrol {
+        width: 80%;
+        height: 100%;
+        border: 2px solid var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 20px;
+        color: var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .formcontrol>form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .formcontrol>form>input,
+    .formcontrol>form>select {
+        margin-bottom: 20px;
+    }
+
+    .formcontrol>form>input[type="text"] {
+        height: 35px;
+        width: 55%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 20px;
+    }
+
+    .formcontrol>form>select {
+        height: 40px;
+        min-width: 30%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        font-size: 20px;
+        color: white;
+    }
+
+    .formcontrol>form>select>option {
+        background-color: gray;
+    }
+
+    .formcontrol>form>input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        position: relative;
+        bottom: 27px;
+        left: 180px;
+    }
+
+    .formcontrol>form>button {
+        height: 45px;
+        min-width: 45%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 24px;
+    }
+
+    #email {
+        width: 85%;
+    }
+
+    .formcontrol>form>textarea {
+        width: 300px;
+        height: 200px;
+        font-size: 24px;
+        border-radius: 20px;
+        background-color: var(--tra);
+        border: 2px solid white;
+        color: var(--cfont);
+        margin-bottom: 20px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .formcontrol {
+        width: 90%;
+        height: 100%;
+        border: 2px solid var(--cfont);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 20px;
+        color: var(--cfont);
+        padding: 20px 0 20px 0;
+    }
+
+    .formcontrol>form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .formcontrol>form>input,
+    .formcontrol>form>select {
+        margin-bottom: 20px;
+    }
+
+    .formcontrol>form>input[type="text"] {
+        height: 25px;
+        width: 55%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 20px;
+    }
+
+    .formcontrol>form>select {
+        height: 30px;
+        min-width: 25%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .formcontrol>form>select>option {
+        background-color: gray;
+    }
+
+    .formcontrol>form>input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        position: relative;
+        left: 0;
+        bottom: 0;
+    }
+
+    .formcontrol>form>button {
+        height: 35px;
+        min-width: 45%;
+        background-color: var(--tra);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: var(--cfont);
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .formcontrol>form>textarea {
+        width: 80%;
+        height: 200px;
+        font-size: 24px;
+        border-radius: 20px;
+        background-color: var(--tra);
+        border: 2px solid white;
+        color: var(--cfont);
+        margin-bottom: 20px;
+    }
+
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: quiz.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: quiz.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Deklaracja zmiennych
+ * @type {Object}
+ */
+let QuestionsBase; //zmienna która będzie przechowywać baze pytań pobraną z pliku JSON
+/**
+ * @type {HTMLElement}
+ */
+var quizDiv = document.getElementById('generatedquiz');
+/**
+ * @type {HTMLElement}
+ */
+var resultsDiv = document.getElementById('results');
+/**
+ * @type {HTMLElement}
+ */
+var submitButton = document.getElementById('submit');
+
+/**
+ * Blok odpowiadający za przyjęcia numeru otrzymanego ze selectQuiz.js
+ * W zależności od numeru zostaje wybrany odpowiedni plik .json.
+ * Z niego zostaje pobrana baza pytań. 
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  var url = new URLSearchParams(window.location.search);
+  var selectedQuiz = url.get('quizNumber'); //pobranie parametru numeru quizu wybranego w quizmenu.html i wybranie odpowiedniego pliku JSON oraz wywołanie metody generateQuiz
+  if (selectedQuiz == 1) {
+    fetch('../Scripts/Jsons/questionseng.json')
+      .then(response => response.json())
+      .then(data => {
+        QuestionsBase = data.questions;
+        console.log("Wszystkie pytania:", QuestionsBase);
+        generateQuiz(QuestionsBase, quizDiv, resultsDiv, submitButton);
+      })
+      .catch(error => console.error('Błąd pobierania danych:', error));
+  }
+
+  if (selectedQuiz == 2) {
+    fetch('../Scripts/Jsons/questionssp.json')
+      .then(response => response.json())
+      .then(data => {
+        QuestionsBase = data.questions;
+        console.log("Wszystkie pytania:", QuestionsBase);
+        generateQuiz(QuestionsBase, quizDiv, resultsDiv, submitButton);
+      })
+      .catch(error => console.error('Błąd pobierania danych:', error));
+  }
+
+  if (selectedQuiz == 3) {
+    fetch('../Scripts/Jsons/questionsge.json')
+      .then(response => response.json())
+      .then(data => {
+        QuestionsBase = data.questions;
+        console.log("Wszystkie pytania:", QuestionsBase);
+        generateQuiz(QuestionsBase, quizDiv, resultsDiv, submitButton);
+      })
+      .catch(error => console.error('Błąd pobierania danych:', error));
+  }
+
+  if (selectedQuiz == 4) {
+    fetch('../Scripts/Jsons/questionsfr.json')
+      .then(response => response.json())
+      .then(data => {
+        QuestionsBase = data.questions;
+        console.log("Wszystkie pytania:", QuestionsBase);
+        generateQuiz(QuestionsBase, quizDiv, resultsDiv, submitButton);
+      })
+      .catch(error => console.error('Błąd pobierania danych:', error));
+  }
+
+  if (selectedQuiz == 5) {
+    fetch('../Scripts/Jsons/questionsit.json')
+      .then(response => response.json())
+      .then(data => {
+        QuestionsBase = data.questions;
+        console.log("Wszystkie pytania:", QuestionsBase);
+        generateQuiz(QuestionsBase, quizDiv, resultsDiv, submitButton);
+      })
+      .catch(error => console.error('Błąd pobierania danych:', error));
+  }
+});
+
+/**
+ * @function generateQuiz()
+ * funkcja odpowiadająca za wygenerowanie quizu
+ * @param {Object} questions - baza pytań w formie tablicy pobrana z pliku Json.
+ * @param {HTMLElement} quizContainer - div w którym ma zostać wygenerowany quiz.
+ * @param {HTMLElement} resultsContainer - div w którym wyświetlany jest wynik quizu.
+ * @param {HTMLElement} submitButton - przycisk odpowiadający za zatwierdzenie odpowiedzi
+ */
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton) { //Funkcja generująca quiz
+  showQuestions(questions, quizContainer);
+  submitButton.onclick = function () {
+    showResults(questions, quizContainer, resultsContainer);
+  }
+}
+
+/**
+ * @function showQuestions()
+ * funkcja odpowiadająca za wyświetlenie pytań
+ * @param {Object} questions - baza pytań w formie tablicy
+ * @param {HTMLElement} quizContainer - div w którym ma zostać wygenerowany quiz.
+ */
+
+function showQuestions(questions, quizContainer) { //funkcja pokazująca pytania
+  var output = [];
+  var answers;
+
+  for (var i = 0; i &lt; questions.length; i++) { //przygotowanie odpowiedzi dla każdego pytania
+    answers = [];
+    for (letter in questions[i].answers) {
+      answers.push(
+        '&lt;label>'
+        + '&lt;input type="radio" name="question' + i + '" value="' + letter + '">'
+        + letter + ': '
+        + questions[i].answers[letter]
+        + '&lt;/label>'
+        + '&lt;br>'
+      );
+    }
+    output.push( //wygenerowanie i dodanie gotowego pytania.
+      '&lt;div class="Qcontainer">&lt;div class="question">'+(i+1)+'. '+ questions[i].question + '&lt;/div>'
+      + '&lt;div class="answers">' + answers.join('') + '&lt;/div>&lt;/div>'
+    );
+  }
+  quizContainer.innerHTML = output.join('');
+}
+
+/**
+ * @function showResults()
+ * funkcja odpowiadająca za wyswietlenie wyników quizu
+ * @param {Object} questions - baza pytań w formie tablicy
+ * @param {HTMLElement} quizContainer - div w którym ma zostać wygenerowany quiz.
+ * @param {HTMLElement} resultsContainer - div w którym zostaną pokazane wyniku quizu.
+ */
+
+function showResults(questions, quizContainer, resultsContainer) { //funkcja pokazująca rezultat
+
+  var answerContainers = quizContainer.querySelectorAll('.answers');
+  var selectedAnswer = '';
+  var correctCount = 0; //zmienna przechowywująca liczbe odpowiedzi
+
+  var container = document.getElementsByClassName('Qcontainer');
+  var questionField = document.getElementsByClassName('question');
+
+  for (var i = 0; i &lt; questions.length; i++) {
+    selectedAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value; //wyszukiwanie zaznaczonej odpowiedzi
+    if (selectedAnswer === questions[i].correctAnswer) {
+      correctCount++; //jeśli poprawna zwiększ liczbe dobrych odpowiedzi i zmień kolor borderu danego pytania na lime
+      container[i].style.borderColor = "lime";
+      questionField[i].style.borderBottomColor = "lime";
+      questionField[i].style.color = "lime";
+    }
+    else { //w przeciwnym przypadku zmień na czerwony i wypisz prawidłową odpowiedź
+      container[i].style.borderColor = "red";
+      questionField[i].style.borderBottomColor = "red";
+      questionField[i].style.color = "red";
+      questionField[i].innerHTML = questions[i].question + " (Prawidłowa odpowiedź: " + questions[i].correctAnswer + ")";
+    }
+  }
+
+  resultsContainer.innerHTML = 'Zdobyto ' + correctCount + ' punktów z ' + questions.length + ' punktów.'; //wypisanie końcowe sumy zdobytych punktów
+  var resultdiv = document.querySelector('#results');
+  var circleDiv = document.createElement('div');
+
+  //wypisanie odpowiedniego poziomu w zależności od ilości zdobytych punktów
+
+  if (correctCount === 0) {
+    circleDiv.classList.add('minicircle1');
+    circleDiv.textContent = "Brak";
+  }
+  if (correctCount >= 1 &amp;&amp; correctCount &lt; 3) {
+    circleDiv.classList.add('minicircle1');
+    circleDiv.textContent = "A1";
+  }
+  if (correctCount >= 3 &amp;&amp; correctCount &lt; 6) {
+    circleDiv.classList.add('minicircle2');
+    circleDiv.textContent = "B2";
+  }
+  if (correctCount >= 6 &amp;&amp; correctCount &lt; 9) {
+    circleDiv.classList.add('minicircle3');
+    circleDiv.textContent = "C1";
+  }
+  if (correctCount >= 9 &amp;&amp; correctCount &lt;= 12) {
+    circleDiv.classList.add('minicircle4');
+    circleDiv.textContent = "C2";
+  }
+  resultsContainer.style.border = "2px solid var(--cfont)"
+  resultdiv.appendChild(circleDiv);
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#QuestionsBase">QuestionsBase</a></li><li><a href="global.html#burgerMenu">burgerMenu</a></li><li><a href="global.html#currentSlide()funkcjaodpowiadaj%25C4%2585cazapokazanieodpowiedniegozdj%25C4%2599ciawzale%25C5%25BCno%25C5%259Bciodklikni%25C4%2599tejkropki">currentSlide()funkcja odpowiadająca za pokazanie odpowiedniego zdjęcia w zależności od klikniętej kropki</a></li><li><a href="global.html#generateQuiz()funkcjaodpowiadaj%25C4%2585cazawygenerowaniequizu">generateQuiz()funkcja odpowiadająca za wygenerowanie quizu</a></li><li><a href="global.html#getQuizNumber()funkcjazwracaj%25C4%2585nanumerwzale%25C5%25BCnosciodatrybutualtwznacznikuimg">getQuizNumber()funkcja zwracająna numer w zależnosci od atrybutu alt w znaczniku img</a></li><li><a href="global.html#plusSlides()funkcjaodpowiadaj%25C4%2585cazapokazanienast%25C4%2599pnegolubpoprzedniegozdj%25C4%2599cia">plusSlides()funkcja odpowiadająca za pokazanie następnego lub poprzedniego zdjęcia</a></li><li><a href="global.html#quizDiv">quizDiv</a></li><li><a href="global.html#resultsDiv">resultsDiv</a></li><li><a href="global.html#showQuestions()funkcjaodpowiadaj%25C4%2585cazawy%25C5%259Bwietleniepyta%25C5%2584">showQuestions()funkcja odpowiadająca za wyświetlenie pytań</a></li><li><a href="global.html#showResults()funkcjaodpowiadaj%25C4%2585cazawyswietleniewynik%25C3%25B3wquizu">showResults()funkcja odpowiadająca za wyswietlenie wyników quizu</a></li><li><a href="global.html#showSlides()funkcjaodpowiadaj%25C4%2585cazawy%25C5%259Bwietlniezj%25C4%2599ciaopodanymnumerze">showSlides()funkcja odpowiadająca za wyświetlnie zjęcia o podanym numerze</a></li><li><a href="global.html#slideIndex">slideIndex</a></li><li><a href="global.html#submitButton">submitButton</a></li><li><a href="global.html#toggleFAQAnswer()funkcjaprze%25C5%2582%25C4%2585czaj%25C4%2585castyldisplaymi%25C4%2599dzynoneablock">toggleFAQAnswer()funkcja przełączająca styl display między none a block</a></li><li><a href="global.html#toggleList()funkcjaodpowiadaj%25C4%2585cazarozwini%25C4%2599ciepodmenuodpowiadaj%25C4%2585cegodanemuprzyciskowidziejesi%25C4%2599topoprzezprze%25C5%2582%25C4%2585czenieklasy.ulactive">toggleList()funkcja odpowiadająca za rozwinięcie podmenu odpowiadającego danemu przyciskowidzieje się to poprzez przełączenie klasy .ulactive</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Feb 02 2024 17:56:01 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

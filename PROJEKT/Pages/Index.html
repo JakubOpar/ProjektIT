@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Temat Projektu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                    <li><a href="Zapis.html">Zapisz się</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+    <main>
+        <article>
+            <div class="right">
+                <h2>Witaj na stronie</h2>
+                <h3>Szkoły językwej!</h3>
+                <div class="rd">
+                    <a href="#aboutus">O nas</a>
+                </div>
+            </div>
+            <div class="left">
+                <div class="circles">
+                    <div class="circleA"></div>
+                    <div class="circleB"></div>
+                    <div class="circleC"></div>
+                </div>
+            </div>
+        </article>
+
+        <article id="aboutus">
+            <section class="st">
+                <h2>O nas</h2>
+            </section>
+            <div class="nd">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae venenatis dolor. Pellentesque
+                    et scelerisque diam, et consectetur ex. Aliquam ullamcorper cursus urna condimentum gravida. Aliquam
+                    interdum nibh sit amet sollicitudin aliquam. Suspendisse viverra ut mauris quis porttitor.
+                    Suspendisse at ligula gravida, bibendum velit id, pulvinar ante. Cras a sagittis nunc.</p>
+
+                <p>Suspendisse facilisis hendrerit venenatis. Proin quis sodales metus, eu bibendum risus. Praesent
+                    pulvinar leo id leo elementum, non mattis lacus posuere. Duis ut condimentum elit. Duis at volutpat
+                    sem. Quisque eget dolor purus. Nunc consectetur facilisis laoreet. Donec commodo fringilla est, eget
+                    congue diam euismod sit amet. Nullam tincidunt felis a lacus dictum, in tempor ipsum hendrerit.
+                    Donec ullamcorper nulla mollis arcu semper, eget porta magna dapibus. Donec et sem faucibus,
+                    scelerisque nisi ut, vestibulum arcu.</p>
+
+                <p>liquam porttitor quam vitae tempor imperdiet. Etiam consectetur consequat bibendum. Nam sagittis diam
+                    massa, eget porta urna volutpat consequat. Proin ullamcorper euismod dui sed egestas. Aenean ut
+                    faucibus orci. Donec vel velit justo. Sed sed diam ac purus porta ultrices. Nam quis nisl ut arcu
+                    pharetra pellentesque id sit amet tortor. Aenean pellentesque eleifend libero eu laoreet. Sed
+                    hendrerit convallis massa et dignissim. Etiam finibus tincidunt enim et porta. Duis in viverra quam,
+                    ut ullamcorper leo. Nulla facilisi. In hac habitasse platea dictumst. Morbi fringilla lacus eu
+                    placerat finibus. Sed fermentum nulla dui, in placerat mi facilisis ut.</p>
+
+                <p>Vestibulum quis interdum erat. Vestibulum ullamcorper eros et massa luctus, sit amet auctor mi
+                    facilisis. Phasellus maximus, felis eu pulvinar feugiat, mi nibh finibus neque, et vehicula diam
+                    nibh eu ipsum. Maecenas vehicula pulvinar faucibus. Ut bibendum lectus metus, condimentum
+                    ullamcorper sem sagittis eget. Donec eget imperdiet massa. Aliquam sapien ante, egestas sit amet
+                    ante ac, iaculis tincidunt risus.</p>
+            </div>
+        </article>
+
+        <article id="offer">
+            <div class="left">
+                <h2> Poznaj naszą ofertę!</h2>
+                <div class="rd">
+                    <a href="#">Zobacz szczegóły</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="circles2">
+                    <div class="circleA">C1</div>
+                    <div class="circleB">B2</div>
+                    <div class="circleC">A1</div>
+                </div>
+            </div>
+        </article>
+
+        <article id="contact">
+            <div class="right">
+                <h2> Masz Pytania?</h2>
+                <h3>Napisz do nas lub zobacz często zadawane pytania!</h3>
+                <div class="rd">
+                    <a href="#">Kontakt</a>
+                    <a href="FAQ.html">FAQ</a>
+                </div>
+            </div>
+            <div class="left">
+                <div class="circles3">
+                    <div class="circleA">a</div>
+                    <div class="circleB">あ</div>
+                    <div class="circleC">Д</div>
+                </div>
+            </div>
+        </article>
+
+        <article id="slgal">
+            <section class="st">
+                <h2>Nasza Galeria</h2>
+            </section>
+            <div class="nd">
+                <div class="slideshow-container">
+
+
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj1.jpg" alt="obraz">
+                        <div class="text">1</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj2.jpg" alt="obraz">
+                        <div class="text">2</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj3.jpg" alt="obraz">
+                        <div class="text">3</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="../Images/zdj4.jpg" alt="obraz">
+                        <div class="text">4</div>
+                    </div>
+
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+            <div class="rd">
+                <a href="Galery.html">Zobacz zdjęcia</a>
+            </div>
+            <script src="../Scripts/slider.js"></script>
+
+        </article>
+        <section class="headersocialbar">
+            <h2>Nasze Socialmedia!</h2>
+        </section>
+        <div class="socialbar">
+            <a href="#"><img class="facebook" src="../Images/facebook.png" alt="ioon" /></a>
+            <a href="#"><img class="youtube" src="../Images/youtube.png" alt="ioon" /></a>
+            <a href="#"><img class="twitter" src="../Images/twitter.png" alt="ioon" /></a>
+            <a href="#"><img class="instagram" src="../Images/instagram.png" alt="ioon" /></a>
+        </div>
+        <div class="socialbarbottom">
+            <div class="sin">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+        </div>
+        <footer>
+            Autor: Jakub Opar. Wszelkie prawa zastrzeżone &copy;
+        </footer>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Temat Projektu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                    <li><a href="Zapis.html">Zapisz się</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+    <main>
+        <article id="kontakt">
+            <section class="st">
+                <h2>Napisz do nas!</h2>
+            </section>
+            <div class="nd">
+                <div class="formcontrol">
+                    <form>
+                        <label for="name">Imie:</label>
+                        <input type="text" id="name" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                        <label for="surname">Nazwisko:</label>
+                        <input type="text" id="surname" pattern="[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+" maxlength="20" required>
+                        <label for="tresc">Treść:</label>
+                        <textarea></textarea>
+                        <button type="submit">Wyślij</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+        <footer>
+            Wyszelkie prawa zastrzeżone &copy;.<br>
+            Autor strony: Jakub Opar
+        </footer>
+    </main>
+</body>
+
+</html>

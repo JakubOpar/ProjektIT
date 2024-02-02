@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Temat Projektu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+    <main>
+        <article id="offerdiv">
+            <section class="st">
+                <h2>Nasza oferta</h2>
+            </section>
+            <div class="nd">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc orci justo, consequat non cursus eget,
+                    fringilla ut purus. Cras sit amet neque vitae quam dignissim tempor at in dolor. Proin aliquam
+                    fermentum varius. Maecenas ultricies leo a nisl dapibus venenatis. Phasellus risus lectus, volutpat
+                    non ipsum vitae, porttitor luctus quam. Vestibulum hendrerit dapibus tristique. Donec sed elit ac
+                    diam mollis dictum nec sed elit. Vestibulum hendrerit, lacus in gravida viverra, ex leo gravida
+                    nunc, sed pulvinar elit erat id orci. Mauris tempor nisl ornare nulla imperdiet, vitae dictum massa
+                    bibendum. Suspendisse accumsan, elit eu ullamcorper pellentesque, enim ante laoreet dolor, ultricies
+                    placerat enim ante quis nisi. Phasellus nisi urna, maximus nec sapien id, porttitor congue ante.
+                    Nunc at lectus ut mauris interdum fringilla non nec magna. Donec at mattis tellus, sit amet
+                    pellentesque est. Ut a ultrices nulla.</p>
+                <p>Suspendisse potenti. Ut blandit pellentesque nisl sed tristique. Pellentesque habitant morbi
+                    tristique senectus et netus et malesuada fames ac turpis egestas. Proin sollicitudin interdum leo, a
+                    maximus nulla ornare sed. Morbi vel libero vel sapien porta imperdiet at nec metus. Nullam cursus
+                    lectus purus, sed dapibus ligula iaculis auctor. Morbi semper sit amet justo in rutrum.
+            </div>
+        </article>
+        <footer>
+            Autor: Jakub Opar. Wszelkie prawa zastrzeżone &copy;
+        </footer>
+    </main>
+</body>
+
+</html>

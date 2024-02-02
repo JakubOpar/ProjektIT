@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Temat Projektu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                    <li><a href="Zapis.html">Zapisz się</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+    <main>
+        <article id="langlevels">
+            <section class="st">
+                <h2>Poziomy języków</h2>
+            </section>
+            <div class="nd">
+                <div class="catline">
+                    <div class="minicircle1">A1</div>
+                    <p>Torem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle2">B2</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.
+                    </p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle3">C1</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+                <div class="catline">
+                    <div class="minicircle4">C2</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra.</p>
+                </div>
+            </div>
+        </article>
+        <article id="tab">
+            <section>
+                <h2>Cennik kursów (zł/h)</h2>
+            </section>
+            <div class="tabControl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><img class="minicircle1" src="../Images/uk_mini.png" alt="uk"></th>
+                            <th><img class="minicircle1" src="../Images/ge_mini.png" alt="ge"></th>
+                            <th><img class="minicircle1" src="../Images/sp_mini.png" alt="sp"></th>
+                            <th><img class="minicircle1" src="../Images/fr_mini.png" alt="fr"></th>
+                            <th><img class="minicircle1" src="../Images/it_mini.png" alt="it"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="minicircle1">A1</div>
+                            </td>
+                            <td>40zł</td>
+                            <td>40zł</td>
+                            <td>50zł</td>
+                            <td>50zł</td>
+                            <td>50zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle2">B2</div>
+                            </td>
+                            <td>60zł</td>
+                            <td>60zł</td>
+                            <td>70zł</td>
+                            <td>70zł</td>
+                            <td>70zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle3">C1</div>
+                            </td>
+                            <td>80zł</td>
+                            <td>80zł</td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle4">C2</div>
+                            </td>
+                            <td>100zł</td>
+                            <td>100zł</td>
+                            <td>120zł</td>
+                            <td>120zł</td>
+                            <td>120zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article id="tab">
+            <section>
+                <h2>Cennik egzaminów</h2>
+            </section>
+            <div class="tabControl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><img class="minicircle1" src="../Images/uk_mini.png" alt="uk"></th>
+                            <th><img class="minicircle1" src="../Images/ge_mini.png" alt="ge"></th>
+                            <th><img class="minicircle1" src="../Images/sp_mini.png" alt="sp"></th>
+                            <th><img class="minicircle1" src="../Images/fr_mini.png" alt="fr"></th>
+                            <th><img class="minicircle1" src="../Images/it_mini.png" alt="it"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="minicircle1">A1</div>
+                            </td>
+                            <td>200zł</td>
+                            <td>200zł</td>
+                            <td>400zł</td>
+                            <td>400zł</td>
+                            <td>400zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle2">B2</div>
+                            </td>
+                            <td>600zł</td>
+                            <td>600zł</td>
+                            <td>1000zł</td>
+                            <td>1000zł</td>
+                            <td>1000zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle3">C1</div>
+                            </td>
+                            <td>1500zł</td>
+                            <td>1500zł</td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="minicircle4">C2</div>
+                            </td>
+                            <td>2000zł</td>
+                            <td>2000zł</td>
+                            <td>3000zł</td>
+                            <td>3000zł</td>
+                            <td>3000zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <footer>
+            Autor: Jakub Opar. Wszelkie prawa zastrzeżone &copy;
+        </footer>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Temat Projektu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="hleft">
+            <div id="logo">
+                <div class="box"></div>
+                <h1><span class="let">L</span>ANGSC</h1>
+                <div class="lgroup">
+                    <div class="hlineA"></div>
+                    <div class="hlineB"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <button class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ol>
+            <li><a href="Index.html">Strona Główna</a></li>
+            <li><a href="Galery.html">Galeria</a></li>
+            <li><span>Kursy</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="Cennik.html">Cennik</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="quizmenu.html">Test poziomu</a></li>
+                    <li><a href="Zapis.html">Zapisz się</a></li>
+                </ul>
+            </li>
+            <li><span>Kontakt</span><button class="navbutton" onclick="toggleList(this)">+</button>
+                <ul>
+                    <li><a href="kontakt.html">Napisz do nas</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </li>
+        </ol>
+    </nav>
+    <script src="../Scripts/burger.js"></script>
+    <script src="../Scripts/podmenu.js"></script>
+    <main>
+        <article>
+            <div class="right">
+                <h2>Galeria</h2>
+                <h3>Podtytuł</h3>
+                <div class="rd">
+                    <a href="#Gal">Zobacz zdjęcia</a>
+                </div>
+            </div>
+            <div class="left">
+                <div class="circles">
+                    <div class="circleA"></div>
+                    <div class="circleB"></div>
+                    <div class="circleC"></div>
+                </div>
+            </div>
+        </article>
+        <article class="autoh">
+            <div id="Gal">
+                <img class="photo" src="../Images/zdj1.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj2.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj3.jpg" alt="photo">
+                <img class="photo" src="../Images/zdj4.jpg" alt="photo">
+            </div>
+        </article>
+        <footer>
+            Autor: Jakub Opar. Wszelkie prawa zastrzeżone &copy;
+        </footer>
+    </main>
+</body>
+
+</html>
